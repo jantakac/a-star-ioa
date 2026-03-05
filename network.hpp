@@ -1,0 +1,14 @@
+#ifndef NETWORK_H
+#define NETWORK_H
+
+#include "node.hpp"
+
+#include <fstream>
+#include <algorithm>
+
+namespace Network {
+    std::vector<Node> loadFromFile();
+    std::vector<Node> loadFromFileNodesOnly();
+}
+
+#endif // NETWORK_H
