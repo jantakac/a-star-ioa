@@ -35,3 +35,12 @@ std::vector<Node> Network::loadFromFileNodesOnly()
     }
     return network;
 }
+
+bool Network::isContinuous(const std::vector<Node> &network)
+{
+    for (auto &node : network) {
+        if (node.neighEdges().empty())
+            return false;
+    }
+    return true;
+}

@@ -1,10 +1,10 @@
 #include "node.hpp"
 
-Node::Node(std::string name, uint_fast32_t id, double x, double y)
+Node::Node(std::string name, uint_fast32_t id, double lat, double lon)
     : m_name(std::move(name))
     , m_id(id)
-    , m_x(x)
-    , m_y(y)
+    , m_lat(lat)
+    , m_lon(lon)
 {
 }
 
@@ -56,4 +56,24 @@ bool Node::marked() const
 void Node::setMarked(bool newMarked)
 {
     m_marked = newMarked;
+}
+
+void Node::setAirDistance(float newAirDistance)
+{
+    m_airDistance = newAirDistance;
+}
+
+double Node::lat() const
+{
+    return m_lat;
+}
+
+double Node::lon() const
+{
+    return m_lon;
+}
+
+float Node::combinedDistance() const
+{
+    return m_distance + m_airDistance;
 }

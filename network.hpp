@@ -9,6 +9,7 @@
 namespace Network {
     std::vector<Node> loadFromFile();
     std::vector<Node> loadFromFileNodesOnly();
+    bool isContinuous(const std::vector<Node> &network);
 }
 
 #endif // NETWORK_H
