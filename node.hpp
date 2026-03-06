@@ -13,12 +13,28 @@ public:
     Node(std::string name, uint32_t id, double x, double y);
     uint32_t id() const;
     void addNeighEdge(float length, uint32_t id, uint32_t from, uint32_t to);
+    const std::vector<Edge>& neighEdges() const;
+    float distance() const;
+    uint32_t predecessor() const;
+    float airDistance() const;
+
+    void setDistance(float newDistance);
+
+    void setPredecessor(uint32_t newPredecessor);
+
+    bool marked() const;
+    void setMarked(bool newMarked);
+
 private:
     std::vector<Edge> m_neighEdges{};
     std::string m_name;
     uint32_t m_id;
+    uint32_t m_predecessor;
+    float m_distance;
+    float m_airDistance;
     double m_x;
     double m_y;
+    bool m_marked;
 };
 
 #endif // NODE_H

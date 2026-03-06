@@ -9,6 +9,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/sr_test DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
@@ -27,6 +29,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         node.hpp node.cpp
         edge.hpp
         network.hpp network.cpp
+        pathfinder.hpp pathfinder.cpp
 
 
     )

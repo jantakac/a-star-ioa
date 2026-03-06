@@ -12,8 +12,10 @@ std::vector<Node> Network::loadFromFile()
     uint32_t to;
     float length;
     while (incidFile >> id >> from >> to && lengthFile >> id >> length) {
-        auto it = std::ranges::lower_bound(network, id, {}, &Node::id);
-        it->addNeighEdge(length, id, from, to);
+        auto itFrom = std::ranges::lower_bound(network, from, {}, &Node::id);
+        auto itTo = std::ranges::lower_bound(network, to, {}, &Node::id);
+        itFrom->addNeighEdge(length, id, from, to);
+        itTo->addNeighEdge(length, id, to, from);
     }
     return network;
 }
@@ -22,6 +24,8 @@ std::vector<Node> Network::loadFromFileNodesOnly()
 {
     std::vector<Node> network{};
     std::ifstream posFile("sr_test/SR_nodes.vec");
+    if (posFile.is_open())
+        int i = 1;
     uint32_t id;
     char throwAway;
     double x;
